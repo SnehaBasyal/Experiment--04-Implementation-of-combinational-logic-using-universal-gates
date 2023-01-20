@@ -19,25 +19,75 @@ NAND gate is actually a combination of two logic gates i.e. AND gate followed by
 
 F=((C'.B.A)'(D'.C.A)'(C.B'.A)')'
 
-## Logic Diagram
+## Using NOR gates
 
 Using NOR gates
 NOR gate is actually a combination of two logic gates: OR gate followed by NOT gate. So its output is complement of the output of an OR gate. This gate can have minimum two inputs, output is always one. By using only NOR gates, we can realize all logic functions: AND, OR, NOT, Ex-OR, Ex-NOR, NAND. So this gate is also called universal gate. Designing a circuit with NOR gates only uses the same basic techniques as designing a circuit with NAND gates; that is, the application of deMorgan’s theorem. The only difference between NOR gate design and NAND gate design is that the former must eliminate product terms and the later must eliminate sum terms.
 
 F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'
 
-## Logic Diagram
 ## Procedure
+1. Create a project with required entities.
+2. Create a module along with respective file name.
+3. Run the respective programs for the given boolean equations.
+4. Run the module and get the respective RTL outputs.
+5. Create university program(VWF) for getting timing diagram.
+6. Give the respective inputs for timing diagram and obtain the results.
+
+
 ## Program:
-/*
 Program to implement the given logic function using NAND and NOR gates and to verify its operations in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
+Developed by: Sneha Basyal M
+RegisterNumber: 22008869
+
+Using NAND operation:
+
+module combine1(A,B,C,D,F);
+input A,B,C,D;
+output F;
+wire P,Q,R;
+assign P = C&(~B)&(~A);
+assign Q = D&(~C)&(~A);
+assign R = (~C)&B&(~A);
+assign F = (~P&~Q&~R);
+endmodule
+
+Using NOR operation:
+
+module combine2(A,B,C,D,F);
+input A,B,C,D;
+output F;
+wire P,Q,R,S;
+assign P = C&(~B)&A;
+assign Q = D&(~C)&A;
+assign R = C&(~B)&A;
+assign S = ~(P|Q|R);
+assign F = ~S;
+endmodule
+
 ## RTL realization
 
+## NAND
+![EXPERIMENT-04-IMPLEMENTATION-OF-COMBINATIONAL-LOGIC-USING-UNIVERSAL-GATES](RTL.png)
+
+## NOR
+![EXPERIMENT-04-IMPLEMENTATION-OF-COMBINATIONAL-LOGIC-USING-UNIVERSAL-GATES](norRTL.png)
+
 ## Output:
-## RTL
+
+## NAND
+![EXPERIMENT-04-IMPLEMENTATION-OF-COMBINATIONAL-LOGIC-USING-UNIVERSAL-GATES](nandtable.png)
+
+## NOR
+![EXPERIMENT-04-IMPLEMENTATION-OF-COMBINATIONAL-LOGIC-USING-UNIVERSAL-GATES](nortable.png)
+
 ## Timing Diagram
+
+## NAND
+![EXPERIMENT-04-IMPLEMENTATION-OF-COMBINATIONAL-LOGIC-USING-UNIVERSAL-GATES](nandtiming.png)
+
+## NOR
+![EXPERIMENT-04-IMPLEMENTATION-OF-COMBINATIONAL-LOGIC-USING-UNIVERSAL-GATES](nortiming.png)
+
 ## Result:
 Thus the given logic functions are implemented using NAND and NOR gates and their operations are verified using Verilog programming.
